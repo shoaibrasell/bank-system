@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon-Bank</title>
+    <title>BANGLADESH -Bank</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="login-area">
-        <h1 class="text-center">Welcome To Moon Bank</h1>
+        <h1 class="text-center">Welcome To BANGLADESH Bank</h1>
        <div class="submit-area">
            <h3>Login</h3>
         <input type="text" placeholder="Enter Your Mail" class="form-control">
@@ -25,7 +25,7 @@
             <div class="col-md-4">
                <div class="deposit status">
                 <h5>Deposit</h5>
-                <h2>$00</h2>
+                <h2>$ <span id="currentDeposit">00</span></h2>
                </div>
             </div>
             <div class="col-md-4">
@@ -45,9 +45,9 @@
             <div class="col-md-6 ">
                 <div class="submit-area">
                 <h4>Deposit</h4>
-                <input type="text" class="form-control" placeholder="$ amount you want to deposit">
+                <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
                 <br>
-                <button class="btn btn-success">Deposit</button>
+                <button id="addDeposit" class="btn btn-success">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -61,7 +61,8 @@
         </div>
     </div>
     <script>
-        const loginBtn = document.getElementById('login');
+        //login btn handleer  
+        const loginBtn = document.getElementById("login");
         loginBtn.addEventListener("click", function(){
         const loginArea = document.getElementById("login-area");
         loginArea.style.display="none";
@@ -69,6 +70,21 @@
         const transactionArea = document.getElementById("transaction-area");
         transactionArea.style.display= "block";
         })
+
+        //deposite handler
+        const depositBtn =document.getElementById("addDeposit");
+        depositBtn.addEventListener("click", function(){
+            const depositAmount = document.getElementById("depositAmount").Value;
+            const depositNumber = parseFloat(depositAmount);
+
+
+        const currentDeposit = document.getElementById("currentDeposit").innerText;
+        const currentDepositNumber = parseFloat(currentDeposit);
+        const totalDeposit = depositNumber + currentDepositNumber;
+        
+        document.getElementById("currentDeposit").innerText =totalDeposit;
+        })
+        
     </script>
 </body>
 </html>
